@@ -5,9 +5,6 @@ from datetime import datetime
 from scrapers.g2 import scrape_g2
 
 from scrapers.capterra import scrape_capterra
-# from scrapers.capterra import scrape_capterra_requests as scrape_capterra
-
-
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Scrape reviews from G2/Capterra")
@@ -31,8 +28,11 @@ def parse_args():
 
 def main():
     args = parse_args()
-    start_date = datetime.strptime(args.start_date, "%Y-%m-%d").date()
-    end_date = datetime.strptime(args.end_date, "%Y-%m-%d").date()
+    start_date = datetime.strptime(args.start_date, "%Y-%m-%d")
+    end_date = datetime.strptime(args.end_date, "%Y-%m-%d")
+
+    # start_date = datetime.strptime(args.start_date, "%Y-%m-%d").date()
+    # end_date = datetime.strptime(args.end_date, "%Y-%m-%d").date()
 
     if args.source == "g2":
         reviews = scrape_g2(args.company.lower(), start_date, end_date)

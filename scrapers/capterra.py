@@ -1,7 +1,3 @@
-# from test import CapterraSeleniumScraper  # adjust import path if needed
-
-
-# capterra_scraper.py
 import json
 import time
 import random
@@ -163,7 +159,7 @@ class CapterraSeleniumScraper:
 
             print(f"\n🚀 Scraping reviews from: {review_url}")
             print(f"📅 Date range: {start.date()} to {end.date()}")
-            # print(f"📅 Date range: {start} to {end}")
+            
             reviews = self.extract_reviews_with_pagination(review_url, start, end)
             return reviews
 
@@ -176,5 +172,5 @@ class CapterraSeleniumScraper:
 
 
 def scrape_capterra(company, start_date, end_date):
-    scraper = CapterraSeleniumScraper(headless=True)  # or False for debugging
+    scraper = CapterraSeleniumScraper(headless=True) 
     return scraper.scrape(company_name=company, start=start_date, end=end_date)

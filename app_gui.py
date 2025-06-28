@@ -83,8 +83,7 @@ class ReviewScraperApp:
 
     def run_scraper(self, company, start_date, end_date, source):
         try:
-            # start = datetime.strptime(start_date, "%Y-%m-%d").date()
-            # end = datetime.strptime(end_date, "%Y-%m-%d").date()
+            
             start = datetime.strptime(start_date, "%Y-%m-%d")
             end = datetime.strptime(end_date, "%Y-%m-%d")
 

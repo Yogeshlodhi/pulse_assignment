@@ -20,7 +20,7 @@ def scrape_g2(company_slug, start_date, end_date):
     options.add_argument("--window-size=1920,1080")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-gpu")
-    # options.headless = True  # Try headless AFTER it works in visible mode
+    
 
     print("[*] Launching undetected Chrome browser...")
     driver = uc.Chrome(options=options)
@@ -52,7 +52,7 @@ def scrape_g2(company_slug, start_date, end_date):
 
         for block in blocks:
             try:
-                # print("Block : ", block)
+                
                 title_tag = block.select_one('div[itemprop="name"]')
                 review_paras = block.select('div[itemprop="reviewBody"] p.formatted-text')
                 date_tag = block.select_one('meta[itemprop="datePublished"]')
@@ -75,7 +75,6 @@ def scrape_g2(company_slug, start_date, end_date):
                     "title": title,
                     "review": review,
                     "date": date,
-                    # "reviewer": None,
                     "rating": rating,
                     "source": "G2"
                 })

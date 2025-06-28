@@ -9,8 +9,6 @@ from scrapers.capterra import scrape_capterra
 def parse_args():
     parser = argparse.ArgumentParser(description="Scrape reviews from G2/Capterra")
     
-    # parser.add_argument("--company", required=True, help="Company slug or name")
-    
     parser.add_argument(
         "--company",
         required=True,
@@ -31,8 +29,6 @@ def main():
     start_date = datetime.strptime(args.start_date, "%Y-%m-%d")
     end_date = datetime.strptime(args.end_date, "%Y-%m-%d")
 
-    # start_date = datetime.strptime(args.start_date, "%Y-%m-%d").date()
-    # end_date = datetime.strptime(args.end_date, "%Y-%m-%d").date()
 
     if args.source == "g2":
         reviews = scrape_g2(args.company.lower(), start_date, end_date)
@@ -46,7 +42,7 @@ def main():
         os.makedirs("output")
 
     safe_company = args.company.lower().replace("/", "-")
-    # file_name = f"output/{args.company.lower()}_{args.source}_reviews.json"
+    
     file_name = f"output/{safe_company}_{args.source}_reviews.json"
     with open(file_name, "w", encoding="utf-8") as f:
         json.dump(reviews, f, indent=2, ensure_ascii=False)
